@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body>
+    <div id="app">
+        <h1> My To Do list</h1>
+        <form>
+            <input v-model="newTask">
+            <input type="button" value="add" v-on:click="addItem">
+        </form>
+    </div>
+    <ul id="taskList">
+
+    </ul>
+    <script>
+        let app= new Vue({
+            el: '#app',
+            data: {
+                newTask: ''
+            }
+        ,
+        methods: {
+            addItem: () => {
+                let newItem = document.createElement('li');
+                newItem.innerText = app.newTask;
+                document.getElementById('taskList').appendChild(newItem);
+                app.newTask="";
+
+            }
+            }}
+            )
+    </script>
+</body>
+</html>
